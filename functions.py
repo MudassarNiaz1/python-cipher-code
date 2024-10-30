@@ -1,26 +1,30 @@
 
-def encoder(alpha):
-  user = input("Enter the text:").lower()
-  shift = int(input("Enter the shift:"))
+class Cipher:
+    def __init__(self, alpha):
+        self.alpha = alpha
 
-  shift = shift % 26
-  encoder = ''
+    def encoder(self):
+        user_input = input("Enter your text: ").lower()
+        shift = int(input("Enter your shift: "))
+        shift = shift%26
+        encoder = ''
+        for i in user_input:
+            index = self.alpha.index(i) + shift
+            encoder = encoder + self.alpha[index]
+        return encoder
 
-  for i in user:
-    index = alpha.index(i) + shift
-    encoder = encoder + alpha[index]
-  return encoder 
+
+    def decoder(self):
+        user_input = input("Enter your text: ").lower()
+        shift = int(input("Enter your shift: "))
+        shift = shift%26
+
+        decoder=''
+        for i in user_input:
+            index = self.alpha.index(i) - shift
+            decoder = decoder + self.alpha[index]
+        return decoder
 
 
-def decoder(alpha):
-  user = input('Enter the text:').lower()
-  shift = int(input("Enter the shift:"))
-  shift = shift % 26
 
-  decoder = ''
-
-  for i in user:
-    index = alpha.index(i) - shift
-    decoder = decoder + alpha[index]
-  return decoder
 
